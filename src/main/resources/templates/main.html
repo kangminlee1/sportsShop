@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:height="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 스크립트 추가 -->
+<!--<th:block layout:fragment="script">-->
+<!--</th:block>-->
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .carousel-inner > .item {
+            height: 350px;
+        }
+        .margin{
+            margin-bottom:30px;
+        }
+        .banner{
+            height: 300px;
+            position: absolute; top:0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .card-text{
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+        .center{
+            text-align:center;
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+
+    <div class="jumbotron">
+        <h1 class="display-4">!돌쇠!</h1>
+        <p class="lead">이 쇼핑몰은 돌쇠를 위한 돌쇠만의 스포츠 용품 사이트입니다.</p>
+        <hr class="my-4">
+        <p>돌쇠는 강해수씨를 사랑하며 강해수의 순진한 수컷 대형견입니다.</p>
+    </div>
+
+    <div class="container container-mt" style="margin-top:150px;">
+        <div class="row">
+            <div class="item_list" th:each="item : ${itemList}">
+                <div class="col-md-4 margin">
+                    <div class="card" style="width: 18rem;">
+                        <a th:href="${item.getId}" class="text-dark">
+                            <img th:src="${item.getImgUrl}" class="card-img-top"  width="400" height="400" th:alt="${item.getItemNm}" >
+                            <div class="card-body">
+                                <h4 class="card-title" th:text="${item.getItemNm()}"></h4>
+                                <p class="card-text" th:text="${item.getItemDetail()}"></p>
+                                <h3 class="card-title text-danger" th:text="${item.getPrice()}+원"></h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

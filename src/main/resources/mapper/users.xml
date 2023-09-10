@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+
+    <select id="getUser" resultType="project.sportsShop.vo.User">
+        select *
+        from test1.users
+        where username = #{username};
+    </select>
+
+    <select id="getUserFromId" resultType="project.sportsShop.vo.User">
+        select *
+        from test1.users
+        where id = #{id};
+    </select>
+
+    <select id="getUsers" resultType="project.sportsShop.vo.User">
+        select *
+        from test.users;
+    </select>
+
+    <insert id="addUser" parameterType="project.sportsShop.vo.User">
+        insert into test1.users (username, password)
+        values (#{username}, #{password});
+    </insert>
+
+    <delete id="delUser">
+        delete
+        from test1.users
+        where username = #{username};
+    </delete>
+
+    <delete id="delUserFromId">
+        delete
+        from test1.users
+        where id = #{id};
+    </delete>
+
+</mapper>
